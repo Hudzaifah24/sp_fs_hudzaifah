@@ -3,7 +3,7 @@ import { getServerSession } from "next-auth"
 import { authOptions } from "@/lib/auth"
 import { NextResponse } from "next/server"
 
-export async function POST(request: Request, { params }: { params: { projectId: string, taskId: string } }) {
+export async function POST(request: Request, { params }: { params: { projectId: string, id: string } }) {
   const session = await getServerSession(authOptions)
   if (!session?.user?.email) {
     return NextResponse.json({ message: "Unauthorized" }, { status: 401 })
@@ -30,7 +30,7 @@ export async function POST(request: Request, { params }: { params: { projectId: 
   }
 
   await prisma.task.update({
-    where: { id: params.taskId },
+    where: { id: params.id },
     data: { assigneeId },
   })
 

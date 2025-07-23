@@ -29,6 +29,10 @@ export async function POST(request: Request, { params }: { params: { projectId: 
   await prisma.task.deleteMany({
     where: { projectId },
   })
+
+  await prisma.membership.deleteMany({
+    where: { projectId },
+  })
   
   await prisma.project.delete({
     where: { id: projectId },

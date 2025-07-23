@@ -5,13 +5,7 @@ import { redirect } from "next/navigation"
 import TaskCard from "@/components/TaskCard"
 import Navbar from "@/components/Navbar"
 
-interface ProjectPageProps {
-  params: {
-    id: string
-  }
-}
-
-export default async function ProjectDetailPage({ params }: ProjectPageProps) {
+export default async function ProjectDetailPage({ params }: { params: { id: string } }) {
   const session = await getServerSession(authOptions)
   if (!session?.user?.email) redirect("/login")
 
