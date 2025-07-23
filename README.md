@@ -5,6 +5,15 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
 First, run the development server:
 
 ```bash
+configurasi .env
+# then
+npm intall
+# then
+npx prisma generate
+# then
+npx prisma migrate dev --name init
+# then
+
 npm run dev
 # or
 yarn dev
